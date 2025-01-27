@@ -26,7 +26,7 @@ class student:
         self.var_phone=StringVar()
 
         #First Image
-        img=Image.open(r"C:\Users\lenovo\Desktop\Face_recognition\college_images\mctrgitofficial_cover.jpg")
+        img=Image.open(r"college_images\mctrgitofficial_cover.jpg")
         img=img.resize((1400,130),Image.Resampling.LANCZOS)
         self.photoimg=ImageTk.PhotoImage(img)
 
@@ -34,7 +34,7 @@ class student:
         f_lbl.place(x=0,y=0,width=1400,height=130)
 
         #bgimage
-        img3=Image.open(r"C:\Users\lenovo\Desktop\Face_recognition\college_images\bg.jpg")
+        img3=Image.open(r"college_images\bg.jpg")
         img3=img3.resize((1300,700),Image.Resampling.LANCZOS)
         self.photoimg3=ImageTk.PhotoImage(img3)
 
@@ -51,7 +51,7 @@ class student:
         Left_frame=LabelFrame(main_frame,bd=2,bg="white",relief=RIDGE,text="Student Details",font=("times new roman",12,"bold"))
         Left_frame.place(x=10,y=10,width=610,height=450)
 
-        img_left=Image.open(r"C:\Users\lenovo\Desktop\Face_recognition\college_images\group.jpg")
+        img_left=Image.open(r"college_images\group.jpg")
         img_left=img_left.resize((595,130),Image.Resampling.LANCZOS)
         self.photoimg_left=ImageTk.PhotoImage(img_left)
 
@@ -208,7 +208,7 @@ class student:
         Right_frame=LabelFrame(main_frame,bd=5,bg="white",relief=RIDGE,text="Student Details",font=("times new roman",12,"bold"))
         Right_frame.place(x=630,y=10,width=600,height=450)
 
-        img_right=Image.open(r"C:\Users\lenovo\Desktop\Face_recognition\college_images\group.jpg")
+        img_right=Image.open(r"college_images\group.jpg")
         img_right=img_right.resize((595,130),Image.Resampling.LANCZOS)
         self.photoimg_right=ImageTk.PhotoImage(img_right)
 
@@ -294,7 +294,7 @@ class student:
             messagebox.showerror("Error","All fields are required",parent=self.root)
         else:
             try:
-                conn=mysql.connector.connect(host="localhost",username="root",password="Harshal@1234",database="face_recognizer")    
+                conn=mysql.connector.connect(host="localhost",username="root",password="password",database="face_recognizer")    
                 my_cursor=conn.cursor()
                 my_cursor.execute("insert into student values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(
 
@@ -321,7 +321,7 @@ class student:
 
     #********************fetch data ***************************#
     def fetch_data(self):
-        conn=mysql.connector.connect(host="localhost",username="root",password="Harshal@1234",database="face_recognizer")    
+        conn=mysql.connector.connect(host="localhost",username="root",password="password",database="face_recognizer")    
         my_cursor=conn.cursor()
         my_cursor.execute("select*from student")
         data = my_cursor.fetchall()
@@ -361,7 +361,7 @@ class student:
             try:
                 Update=messagebox.askyesno("Update","Do you want to update this student details",parent=self.root)
                 if Update>0:
-                    conn=mysql.connector.connect(host="localhost",username="root",password="Harshal@1234",database="face_recognizer")    
+                    conn=mysql.connector.connect(host="localhost",username="root",password="password",database="face_recognizer")    
                     my_cursor=conn.cursor()
                     my_cursor.execute("update student set Dept=%s,Course=%s,Year=%s,Semester=%s,Student_id=%s,Name=%s,Division=%s,Roll=%s,Gender=%s,Dob=%s,Email=%s,Phone=%s,Photo_sample=%s where Student_id=%s",(
                                                                                             self.var_dep.get(),
@@ -396,7 +396,7 @@ class student:
             try:
                 delete=messagebox.askyesno("Student Delete Page","Do you want to delete",parent=self.root)
                 if delete>0:
-                    conn=mysql.connector.connect(host="localhost",username="root",password="Harshal@1234",database="face_recognizer")    
+                    conn=mysql.connector.connect(host="localhost",username="root",password="password",database="face_recognizer")    
                     my_cursor=conn.cursor()
                     sql="delete from student where Student_id=%s"
                     val=(self.var_std_id.get(),)
@@ -434,7 +434,7 @@ class student:
             return
 
         try:
-            with mysql.connector.connect(host="localhost", username="root", password="Harshal@1234", database="face_recognizer") as conn:
+            with mysql.connector.connect(host="localhost", username="root", password="password", database="face_recognizer") as conn:
                 my_cursor = conn.cursor()
 
             # Get student_id from user input

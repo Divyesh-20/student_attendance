@@ -15,7 +15,7 @@ class Train:
         title_lbl=Label(self.root,text="Train dataset",font=("times new roman",30,"bold"),bg="grey",fg="black")
         title_lbl.place(x=0,y=0,width=1400,height=45)
 
-        img_top=Image.open(r"C:\Users\lenovo\Desktop\Face_recognition\college_images\ai.jpg")
+        img_top=Image.open(r"college_images\ai.jpg")
         img_top=img_top.resize((595,130),Image.Resampling.LANCZOS)
         self.photoimg_top=ImageTk.PhotoImage(img_top)
 
