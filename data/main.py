@@ -3,9 +3,11 @@ from tkinter import ttk
 from PIL import Image,ImageTk
 from student import student
 import os
+from train import Train
+from attendance import attendance
+from face_recognition import Face_Recognition
 
-
-class Face_Recognition:
+class Face_Recognition_system:
     def __init__(self,root): 
         self.root=root
         self.root.geometry("1530x790+0+0") 
@@ -46,10 +48,10 @@ class Face_Recognition:
         img5=img5.resize((200,200),Image.Resampling.LANCZOS)
         self.photoimg5=ImageTk.PhotoImage(img5)
 
-        b1=Button(bg_img,image=self.photoimg5,cursor="hand2")
+        b1=Button(bg_img,image=self.photoimg5,cursor="hand2",command=self.face_data)
         b1.place(x=350,y=50,width=200,height=180)
 
-        b1_1=Button(bg_img,text="Face Dectector",cursor="hand2",font=("times new roman",15,"bold"),bg="white",fg="black")
+        b1_1=Button(bg_img,text="Face Dectector",cursor="hand2",command=self.face_data,font=("times new roman",15,"bold"),bg="white",fg="black")
         b1_1.place(x=350,y=230,width=200,height=35)
 
         #Attendance
@@ -79,10 +81,10 @@ class Face_Recognition:
         img8=img8.resize((200,200),Image.Resampling.LANCZOS)
         self.photoimg8=ImageTk.PhotoImage(img8)
 
-        b1=Button(bg_img,image=self.photoimg8,cursor="hand2")
+        b1=Button(bg_img,image=self.photoimg8,cursor="hand2",command=self.train_data)
         b1.place(x=100,y=280,width=200,height=180)
 
-        b1_1=Button(bg_img,text="Train Data",cursor="hand2",font=("times new roman",15,"bold"),bg="white",fg="black")
+        b1_1=Button(bg_img,text="Train Data",cursor="hand2",command=self.train_data,font=("times new roman",15,"bold"),bg="white",fg="black")
         b1_1.place(x=100,y=460,width=200,height=35)
 
         #Photos
@@ -114,9 +116,18 @@ class Face_Recognition:
     def student_details(self):
         self.new_window=Toplevel(self.root)
         self.app=student(self.new_window)   
-        
+
+    def train_data(self):
+        self.new_window=Toplevel(self.root)
+        self.app=Train(self.new_window)   
+
+    def face_data(self):
+        self.new_window=Toplevel(self.root)
+        self.app=Face_Recognition(self.new_window)   
+
+
 if __name__ == "__main__":
     root=Tk()
-    obj=Face_Recognition(root)
+    obj=Face_Recognition_system(root)
     root.mainloop()
        
