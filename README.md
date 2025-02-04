@@ -1,1 +1,1 @@
-# student_attendance
+# Face Recognition Based Attendance system
